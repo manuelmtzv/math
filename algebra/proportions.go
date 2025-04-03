@@ -54,3 +54,26 @@ func (p *Proportion) CalculateMissingVariable(a, b models.Fraction) (float64, er
 		return 0, fmt.Errorf("no missing variable found")
 	}
 }
+
+func (p *Proportion) Demostration() {
+	fmt.Println("Proportion Demonstration")
+	fmt.Println("a/b = c/d")
+
+	fmt.Println("Left Side: 1/1.29")
+	leftSide := models.Fraction{
+		Numerator:   1,
+		Denominator: 1.29,
+	}
+
+	fmt.Println("Right Side: 0/1")
+	rightSide := models.Fraction{
+		Numerator:   0,
+		Denominator: 1,
+	}
+
+	result, err := p.CalculateMissingVariable(leftSide, rightSide)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Result: %.8f \n", result)
+}
